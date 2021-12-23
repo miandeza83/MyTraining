@@ -3,6 +3,8 @@ const windowButtons = document.getElementsByClassName('window-btn');
 const sourcesContainer = document.querySelector('.sources-container');
 const conditionsContainer = document.querySelector('.conditions-container');
 
+const sourceTypeSelect = document.querySelector('.source-type-select');
+
 let currentButton = ''; ///
 
 //turns off all conatiners from view
@@ -41,3 +43,10 @@ for (let i = 0; i < windowButtons.length; i++) {
    }
 }
 
+///source type select options to be shown
+
+let sourceTypes = [
+  'candlestick','highest/lowest','pivot','median', 'value','indicators'
+];
+
+////append an option to the source type select 
