@@ -24,9 +24,20 @@ for (let i = 0; i < windowButtons.length; i++) {
     windowButtons[i].style.backgroundColor = 'blue';
     currentButton = windowButtons[i].textContent;
 
-    setWindowView(currentButton);
+    setWindowView();
 
   });
 }
-
+ function setWindowView () {
+   if (currentButton === 'sources') {
+     sourcesContainer.style.display = 'block';
+   } else {
+     sourcesContainer.style.display = 'none';
+   }
+   if (currentButton === 'conditions') {
+     conditionsContainer.style.display = 'block';
+   } else {
+     conditionsContainer.style.display = 'none';
+   }
+}
 
