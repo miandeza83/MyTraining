@@ -5,6 +5,9 @@ const conditionsContainer = document.querySelector('.conditions-container');
 
 const sourceTypeSelect = document.querySelector('.source-type-select');
 const sourceSpecSelect = document.querySelector('.source-spec-select');
+const sourceSetupDiv = document.querySelector('.source-setup-div');
+const sourcesPile = document.querySelector('.sources-pile');
+const makeSrcBtn = document.querySelector('.make-src-btn');
 
 let currentButton = ''; ///
 
@@ -71,7 +74,8 @@ sourceTypes.forEach(type => {
   //append option to the select ref
   sourceTypeSelect.append(createOptionElem);
 });
-
+//////////////////////////
+////////////////////////////
 sourceTypeSelect.onclick = () => {
   //makea  function to clear all spec select option elements
   function clearSpecSelect() {
@@ -125,4 +129,30 @@ sourceTypeSelect.onclick = () => {
     default:
       clearSpecSelect();
   }
+}
+//////////////////////////////////
+/////////////////////////////////
+sourceSpecSelect.onclick = () => {
+  sourceSetupDiv.innerHTML = '';
+
+  switch(sourceSpecSelect.value) {
+    case 'open':case 'high': case 'low': case 'close' : case 'hl2' : case 'ohl3' : case 'ohlc4':
+      sourceSetupDiv.innerHTML = `
+        No Setup Needed
+      `;
+      break;
+    case 'highest': case 'lowest': case 'highest bars': case 'lowest bars':
+      sourceSetupDiv.innerHTML = `
+        Length: <input type='number' value='10' /><br />
+        Source: <select><option>dynoSources here</option></select>
+      `;
+      break;
+    default:
+      sourceSetupDiv.innerHTML = 'hallellujah'
+  }
+}
+
+///when user pushes button, take source title and put it in a div below. 
+makeSrcBtn.onclick = () => {
+  sourcesPile.innerHTML += sourcesContainer.children[0].value + ', ';
 }
