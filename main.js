@@ -50,3 +50,11 @@ let sourceTypes = [
 ];
 
 ////append an option to the source type select 
+sourceTypes.forEach(type => {
+  //make an optio element
+  const createOptionElem = document.createElement('option');
+  //give the option text of the type
+  createOptionElem.textContent = type;
+  //append option to the select ref
+  sourceTypeSelect.append(createOptionElem);
+});
