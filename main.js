@@ -58,6 +58,9 @@ const highestLowestSpecs = [
 const pivotSpecs = [
   'pivot low','pivot high'
 ];
+const indicatorsSpecs = [
+  'macd', 'rsi', 'stochastics'
+];
 
 ////append an option to the source type select 
 sourceTypes.forEach(type => {
@@ -89,5 +92,37 @@ sourceTypeSelect.onclick = () => {
         })
       
       break;
+    case 'highest/lowest':
+      clearSpecSelect();
+
+        highestLowestSpecs.forEach(spec => {
+          const specOptElem = document.createElement('option');
+          specOptElem.textContent = spec;
+          sourceSpecSelect.append(specOptElem);
+       }) 
+
+      break;
+    case 'pivot':
+      clearSpecSelect();
+
+       pivotSpecs.forEach(spec => {
+         const specOptElem = document.createElement('option');
+         specOptElem.textContent = spec;
+         sourceSpecSelect.append(specOptElem);
+       })
+
+      break;
+    case 'indicators':
+      clearSpecSelect();
+
+      indicatorsSpecs.forEach(spec => {
+        const specOptElem = document.createElement('option');
+        specOptElem.textContent = spec;
+        sourceSpecSelect.append(specOptElem);
+      })
+
+      break;
+    default:
+      clearSpecSelect();
   }
 }
