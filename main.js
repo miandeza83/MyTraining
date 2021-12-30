@@ -4,6 +4,7 @@ const sourcesContainer = document.querySelector('.sources-container');
 const conditionsContainer = document.querySelector('.conditions-container');
 
 const sourceTypeSelect = document.querySelector('.source-type-select');
+const sourceSpecSelect = document.querySelector('.source-spec-select');
 
 let currentButton = ''; ///
 
@@ -45,8 +46,17 @@ for (let i = 0; i < windowButtons.length; i++) {
 
 ///source type select options to be shown
 
-let sourceTypes = [
+const sourceTypes = [
   'candlestick','highest/lowest','pivot','median', 'value','indicators'
+];
+const candlestickSpecs = [
+  'open','high','low','close','hl2','ohl3','ohlc4'
+];
+const highestLowestSpecs = [
+  'highest','lowest','highest bars','lowest bars'
+];
+const pivotSpecs = [
+  'pivot low','pivot high'
 ];
 
 ////append an option to the source type select 
@@ -58,3 +68,26 @@ sourceTypes.forEach(type => {
   //append option to the select ref
   sourceTypeSelect.append(createOptionElem);
 });
+
+sourceTypeSelect.onclick = () => {
+  //makea  function to clear all spec select option elements
+  function clearSpecSelect() {
+    while(sourceSpecSelect.length !== 0) {
+      sourceSpecSelect[0].replaceWith();
+    }
+  }
+
+//an iffstateent/switch to set those spect options. 
+  switch(sourceTypeSelect.value) {
+    case 'candlestick':
+      clearSpecSelect();
+
+        candlestickSpecs.forEach(spec => {
+          const specOptElem = document.createElement('option');
+          specOptElem.textContent = spec;
+          sourceSpecSelect.append(specOptElem);
+        })
+      
+      break;
+  }
+}
