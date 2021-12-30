@@ -147,6 +147,11 @@ sourceSpecSelect.onclick = () => {
         Source: <select><option>dynoSources here</option></select>
       `;
       break;
+    case 'pivot low': case 'pivot high':
+      sourceSetupDiv.innerHTML = `
+      hola!!
+      `;
+      break;
     default:
       sourceSetupDiv.innerHTML = 'hallellujah'
   }
